@@ -38,7 +38,7 @@ console.log('Pratos: ', pratos)
                             source={{uri: prato.photoUrl}}/>
                         <View>
                             <Text style={{color:'red', marginLeft:5}}>{prato.name}</Text>
-                            <Text style={{marginLeft:5}}>R$ {prato.price}</Text>
+                            <Text style={{marginLeft:5}}>R$ {prato.price},00</Text>
                         </View>
                         <TouchableOpacity style={styles.button}>
                             <Text style={{color:'white'}}>Adicionar</Text>
