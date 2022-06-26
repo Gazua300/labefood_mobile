@@ -1,16 +1,20 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { StyleSheet } from "react-native"
 import { url } from "../../constants/urls"
 import axios from 'axios'
+import { AuthContext } from "../../global/Context"
 import { Text,
     TextInput,
     View,
     TouchableOpacity,
 } from "react-native"
 
+
+
 const Login = (props)=>{
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const { setters } = useContext(AuthContext)
 
 
     const login = ()=>{
@@ -18,9 +22,9 @@ const Login = (props)=>{
             email,
             password
         }
-
         axios.post(`${url}/login`, body).then(res=>{
-            console.log(res.data)
+            setters.setToken(res.data.token)
+            props.navigation.navigate('Feed')
         }).catch(e=>{
             alert(e.response.data.message)
         })

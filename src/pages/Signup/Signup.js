@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import axios from 'axios'
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native"
 import { url } from "../../constants/urls"
+import { AuthContext } from "../../global/Context"
 
 
 
@@ -11,25 +12,26 @@ const Signup = (props)=>{
     const [cpf, setCpf] = useState('')
     const [senha, setSenha] = useState('')
     const [confSenha, setConfSenha] = useState('')
+    const { setters } = useContext(AuthContext)
 
 
-
+    
     const signup = ()=>{
         const body = {
-            nome,
+            name:nome,
             email,
             cpf,
-            senha,
-            confSenha
+            password: senha,
         }
 
         if(senha !== confSenha){
             alert('As senhas não conferem!')
         }else{
             axios.post(`${url}/signup`, body).then(res=>{
-                console.log(res.data)
+                setters.setToken(res.data.token)
+                props.navigation.navigate('Feed')
             }).catch(e=>{
-                alert(e.response.data)
+                alert(e.response.data.message)
             })
         }
     }
