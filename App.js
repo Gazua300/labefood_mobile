@@ -7,6 +7,7 @@ import Signup from './src/pages/Signup/Signup'
 import Feed from './src/pages/feed/Feed'
 import Detail from './src/pages/detail/Detail.js'
 import Address from './src/pages/address/Address'
+import Cart from './src/pages/cart/Cart'
 
 
 
@@ -41,6 +42,10 @@ export default function App() {
           <Stack.Screen
             name='Endereço'
             component={Address}/>
+
+          <Stack.Screen
+            name='Carrinho'
+            component={Cart}/>
 
         </Stack.Navigator>
       </AuthProvider>

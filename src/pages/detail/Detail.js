@@ -1,17 +1,18 @@
 import { useContext } from "react"
 import { AuthContext } from "../../global/Context"
 import { Avatar } from "react-native-paper"
+import Popup from "../../components/Modal"
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 
 
 
 const Detail = (props)=>{
-    const { states } = useContext(AuthContext)
+    const { states, setters } = useContext(AuthContext)
     const restaurant = states.restaurant
     const pratos = restaurant.products
 
-console.log('Pratos: ', pratos)
 
+    
 
     return(
         <ScrollView>
@@ -31,6 +32,7 @@ console.log('Pratos: ', pratos)
                 <Text style={{marginTop: 20, textAlign:'center'}}>Cardápio principal</Text>
                 <View style={styles.line}/>
             </View>
+            <Popup/>
             {pratos && pratos.map(prato=>{
                 return(
                     <View key={prato.id} style={styles.card}>
@@ -40,7 +42,8 @@ console.log('Pratos: ', pratos)
                             <Text style={{color:'red', marginLeft:5}}>{prato.name}</Text>
                             <Text style={{marginLeft:5}}>R$ {prato.price},00</Text>
                         </View>
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.button}
+                            onPress={()=> setters.add(prato)}>
                             <Text style={{color:'white'}}>Adicionar</Text>
                         </TouchableOpacity>
                     </View>
