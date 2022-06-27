@@ -49,9 +49,10 @@ const Feed =(props)=>{
     }
 
 
-    // const found = restaurants.filter(rest=>{
-    //     return rest.name.toLowerCase().includes(searchQuery.toLocaleLowerCase())
-    // })
+    const found = restaurants.filter(rest=>{
+        return rest.name.toLowerCase().includes(searchQuery.toLocaleLowerCase())
+    })
+
 
 
     return(
@@ -59,10 +60,10 @@ const Feed =(props)=>{
             <View style={styles.logo}>
                 <Image
                     source={require('../../../assets/logo-future-eats-invert.png')}/>
-                <Searchbar
+                <Searchbar style={{marginBottom: 25}}
                     onChangeText={onChangeSearch}
                     value={searchQuery}/>
-                {restaurants && restaurants.map(rest=>{
+                {found && found.map(rest=>{
                     return(
                         <View key={rest.id}
                             style={styles.container}>

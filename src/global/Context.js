@@ -10,7 +10,6 @@ function AuthProvider({children}){
     const [restaurant, setRestaurant] = useState([])
     const [token, setToken] = useState('')
 
-
           
 
     const states = { token, restaurant }

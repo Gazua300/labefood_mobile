@@ -6,6 +6,9 @@ import Login from './src/pages/Login/Login'
 import Signup from './src/pages/Signup/Signup'
 import Feed from './src/pages/feed/Feed'
 import Detail from './src/pages/detail/Detail.js'
+import Address from './src/pages/address/Address'
+
+
 
 
 const Stack = createNativeStackNavigator()
@@ -34,6 +37,10 @@ export default function App() {
           <Stack.Screen
             name='Detail'
             component={Detail}/>
+
+          <Stack.Screen
+            name='Endereço'
+            component={Address}/>
 
         </Stack.Navigator>
       </AuthProvider>
