@@ -2,11 +2,13 @@ import { useContext } from "react"
 import { AuthContext } from "../../global/Context"
 import { Avatar } from "react-native-paper"
 import Popup from "../../components/Modal"
+// import Icon from 'react-native-vector-icons/FontAwesome'
+import Footer from "../../components/Footer"
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 
 
 
-const Detail = (props)=>{
+const Detail = ()=>{
     const { states, setters } = useContext(AuthContext)
     const restaurant = states.restaurant
     const pratos = restaurant.products
@@ -48,7 +50,8 @@ const Detail = (props)=>{
                         </TouchableOpacity>
                     </View>
                 )
-            })}            
+            })}  
+            <Footer/>        
         </ScrollView>
     )
 }

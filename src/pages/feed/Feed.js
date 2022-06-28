@@ -37,6 +37,7 @@ const Feed =(props)=>{
         }
         axios.get(`${url}/restaurants/${id}`, headers).then(res=>{
             setters.setRestaurant(res.data.restaurant)
+            setters.setRestaurantId(id)
             props.navigation.navigate('Detail')
         }).catch(e=>{
             alert(e.response.data)
@@ -58,9 +59,8 @@ const Feed =(props)=>{
     return(
         <ScrollView>
             <View style={styles.logo}>
-                <Image
-                    source={require('../../../assets/logo-future-eats-invert.png')}/>
-                <Searchbar style={{marginBottom: 25}}
+                <Searchbar style={{margin:10
+                }}
                     onChangeText={onChangeSearch}
                     value={searchQuery}/>
                 {found && found.map(rest=>{

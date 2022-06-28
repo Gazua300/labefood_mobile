@@ -1,13 +1,14 @@
 import { useContext, useState } from "react"
 import { Picker } from "@react-native-picker/picker"
-import { View, Text, Modal, StyleSheet, TouchableOpacity } from "react-native"
+import { View, Text, Modal, StyleSheet, TouchableOpacity, ProgressViewIOSComponent } from "react-native"
 import { AuthContext } from "../global/Context"
+
+
 
 const Popup = ()=>{
     const { states, setters } = useContext(AuthContext)
     
-
-
+ 
 
     return(
         <View style={styles.container}>
@@ -15,6 +16,7 @@ const Popup = ()=>{
                 animationType="slide"
                 visible={states.visible}
                 transparent={true}>
+
 
                 <TouchableOpacity onPress={()=> setters.setVisible(false)}>
                     <Text style={styles.close}>X</Text>
@@ -48,7 +50,8 @@ const Popup = ()=>{
                                 label="10" value={10}/>
                         </Picker>
                         <TouchableOpacity style={styles.button}>
-                            <Text style={{color:'whitesmoke'}}>Adicionar</Text>
+                            <Text style={{color:'whitesmoke'}}
+                                onPress={()=> setters.addToCart(states.dish)}>Adicionar</Text>
                         </TouchableOpacity>
                     </View>
                 </View>                
