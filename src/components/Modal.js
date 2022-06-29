@@ -22,7 +22,10 @@ const Popup = ()=>{
                     <Text style={styles.close}>X</Text>
                 </TouchableOpacity>
                 <View style={styles.modalContainer}>
-                    <Text style={styles.txtStyle}>Informe a quantidade desejada</Text>                
+                    <Text style={styles.txtStyle}>
+                        {states.dish.name}{'\n'}
+                        Informe a quantidade desejada
+                    </Text>                
                     <View style={styles.modalStyle}>
                         <Picker style={styles.pickerContainer}
                             selectedValue={states.product}
@@ -51,7 +54,7 @@ const Popup = ()=>{
                         </Picker>
                         <TouchableOpacity style={styles.button}>
                             <Text style={{color:'whitesmoke'}}
-                                onPress={()=> setters.addToCart(states.dish)}>Adicionar</Text>
+                                onPress={()=> setters.addToCart(states.dish)}>Carrinho</Text>
                         </TouchableOpacity>
                     </View>
                 </View>                
