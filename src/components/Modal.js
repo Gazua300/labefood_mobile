@@ -1,6 +1,7 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { Picker } from "@react-native-picker/picker"
-import { View, Text, Modal, StyleSheet, TouchableOpacity, ProgressViewIOSComponent } from "react-native"
+import Icon from "react-native-vector-icons/FontAwesome"
+import { View, Text, Modal, StyleSheet, TouchableOpacity } from "react-native"
 import { AuthContext } from "../global/Context"
 
 
@@ -18,8 +19,9 @@ const Popup = ()=>{
                 transparent={true}>
 
 
-                <TouchableOpacity onPress={()=> setters.setVisible(false)}>
-                    <Text style={styles.close}>X</Text>
+                <TouchableOpacity onPress={()=> setters.setVisible(false)}
+                    style={styles.close}>
+                    <Icon name='close' size={35}/>
                 </TouchableOpacity>
                 <View style={styles.modalContainer}>
                     <Text style={styles.txtStyle}>
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     close: {
         fontSize: 35,
         position: 'absolute',
-        right: '5%',
+        right: '10%',
     }
 })
 

@@ -59,12 +59,7 @@ export default function App() {
 
           <Stack.Screen
             name='Carrinho'
-            component={Cart}
-            options={{
-              headerLeft: ()=>(
-                <View/>
-              )
-            }}/>
+            component={Cart}/>
           
           <Stack.Screen
             name='Perfil'

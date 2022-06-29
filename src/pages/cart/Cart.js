@@ -6,7 +6,7 @@ import { Avatar } from 'react-native-paper'
 import Footer from '../../components/Footer'
 import Edit from 'react-native-vector-icons/Entypo'
 import { Picker } from "@react-native-picker/picker"
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 
 
 
@@ -78,7 +78,7 @@ const Cart = (props)=>{
 
 
     return(
-        <View>
+        <ScrollView>
             <View style={styles.sectionOne}>
                 <View>
                     <Text style={{fontSize:17}}>Endereço para entrega:</Text>
@@ -132,7 +132,7 @@ const Cart = (props)=>{
                 <Text style={{textAlign:'center', color:'whitesmoke'}}>Constultar pedido ativo</Text>
             </TouchableOpacity>
             <Footer/>
-        </View>
+        </ScrollView>
     )
 }
 

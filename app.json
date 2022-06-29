@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.gazua300.ifuture"
     },
     "web": {
       "favicon": "./assets/favicon.png"
