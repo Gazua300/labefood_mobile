@@ -35,7 +35,8 @@ function AuthProvider(props){
     const addToCart = (ds)=>{
         const newBag = [...bag, ds]
         setBag(newBag)
-        navigation.navigate('Carrinho')                
+        navigation.navigate('Carrinho')
+        setVisible(false)                
     }
 
 
