@@ -6,6 +6,7 @@ import { Avatar } from 'react-native-paper'
 import Edit from 'react-native-vector-icons/Entypo'
 import { Picker } from "@react-native-picker/picker"
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import Footer from '../../components/Footer'
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 
 
@@ -131,6 +132,7 @@ const Cart = (props)=>{
                 onPress={checkActiveRequest}>
                 <Text style={{textAlign:'center', color:'whitesmoke'}}>Constultar pedido ativo</Text>
             </TouchableOpacity>
+            <Footer/>
         </ScrollView>
     )
 }

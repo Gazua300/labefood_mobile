@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react'
 import { AuthContext } from '../../global/Context'
 import Edit from 'react-native-vector-icons/Entypo'
+import Footer from '../../components/Footer'
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native"
 
 
@@ -59,6 +60,7 @@ const Profile = (props)=>{
                     </View>
                 )
             }) : <Text></Text>}
+            <Footer/>
         </ScrollView>
     )
 }
