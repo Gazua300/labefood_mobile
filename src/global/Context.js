@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import { url } from "../constants/urls"
 import axios from 'axios'
 
@@ -24,7 +25,17 @@ function AuthProvider(props){
 
 
 
+    const getToken = async(tk)=>{
+        try{
+
+            await AsyncStorage.setItem('token', tk)            
+
+        }catch(e){
+            alert(e)
+        }
+    }
     
+
     const add = (ds)=>{
         setDishId(ds.id)
         setDish(ds)
@@ -40,10 +51,10 @@ function AuthProvider(props){
     }
 
 
-    const getProfile = ()=>{
+    const getProfile = async()=>{
         const headers = {
             headers: {
-                auth: token
+                auth: await AsyncStorage.getItem('token')
             }
         }
         axios.get(`${url}/profile`, headers).then(res=>{
@@ -54,10 +65,10 @@ function AuthProvider(props){
     }
     
     
-    const historicRequests = ()=>{
+    const historicRequests = async()=>{
         const headers = {
             headers: {
-                auth: token
+                auth: await AsyncStorage.getItem('token')
             }
         }
         axios.get(`${url}/orders/history`, headers).then(res=>{
@@ -68,10 +79,10 @@ function AuthProvider(props){
     }
 
 
-    const activeRequest = ()=>{
+    const activeRequest = async()=>{
         const headers = {
             headers: {
-                auth: token
+                auth: await AsyncStorage.getItem('token')
             }
         }
         axios.get(`${url}/active-order`, headers).then(res=>{
@@ -82,10 +93,10 @@ function AuthProvider(props){
     }
 
 
-    const registeredAddress = ()=>{
+    const registeredAddress = async()=>{
         const headers = {
             headers: {
-                auth: token
+                auth: await AsyncStorage.getItem('token')
             }
         }
         axios.get(`${url}/profile/address`, headers).then(res=>{
@@ -99,7 +110,7 @@ function AuthProvider(props){
 
     const states = { token, restaurant, product, visible, dish, bag, dishId, profile,
         restaurantId, demands, request, address }
-    const setters = { setToken, setRestaurant, setProduct, setVisible, add, addToCart,
+    const setters = { getToken, setToken, setRestaurant, setProduct, setVisible, add, addToCart,
         setBag, setRestaurantId }
     const requests = { getProfile, historicRequests, activeRequest, registeredAddress }
 

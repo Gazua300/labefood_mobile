@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import { AuthContext } from '../../global/Context'
 import axios from 'axios'
 import { url } from '../../constants/urls'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 
 
@@ -13,7 +14,7 @@ const UpdateProfile = (props)=>{
 
 
     
-    const upToDate = ()=>{
+    const upToDate = async()=>{
         const body = {
             name,
             email,
@@ -21,7 +22,7 @@ const UpdateProfile = (props)=>{
         }
         const headers = {
             headers: {
-                auth: states.token
+                auth: await AsyncStorage.getItem('token')
             }
         }
         axios.put(`${url}/profile`, body, headers).then(res=>{

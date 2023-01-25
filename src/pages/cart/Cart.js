@@ -3,9 +3,9 @@ import axios from 'axios'
 import { url } from '../../constants/urls'
 import { AuthContext } from '../../global/Context'
 import { Avatar } from 'react-native-paper'
-import Footer from '../../components/Footer'
 import Edit from 'react-native-vector-icons/Entypo'
 import { Picker } from "@react-native-picker/picker"
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 
 
@@ -43,7 +43,7 @@ const Cart = (props)=>{
     }
 
 
-    const shopFinish = ()=>{
+    const shopFinish = async()=>{
         const body = {
             products: [
                 {
@@ -55,7 +55,7 @@ const Cart = (props)=>{
         }
         const headers = {
             headers: {
-                auth: states.token
+                auth: await AsyncStorage.getItem('token')
             }
         }
 
@@ -131,7 +131,6 @@ const Cart = (props)=>{
                 onPress={checkActiveRequest}>
                 <Text style={{textAlign:'center', color:'whitesmoke'}}>Constultar pedido ativo</Text>
             </TouchableOpacity>
-            <Footer/>
         </ScrollView>
     )
 }

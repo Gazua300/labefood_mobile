@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react'
 import axios from 'axios'
-import { View, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { url } from '../../constants/urls'
 import { AuthContext } from '../../global/Context'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { View, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 const Address = (props)=>{
     const { states, setters } = useContext(AuthContext)
@@ -15,7 +16,7 @@ const Address = (props)=>{
 
 
 
-    const saveAddress = ()=>{
+    const saveAddress = async()=>{
         const body = {
             street,
             number,
@@ -26,7 +27,7 @@ const Address = (props)=>{
         }
         const headers = {
             headers: {
-                auth: states.token
+                auth: await AsyncStorage.getItem('token')
             }
         }
         axios.put(`${url}/address`, body, headers).then(res=>{

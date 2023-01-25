@@ -1,24 +1,54 @@
-import axios from 'axios'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState, useCallback } from 'react'
 import { url } from '../../constants/urls'
+import axios from 'axios'
 import { AuthContext } from '../../global/Context'
 import { Searchbar, Avatar } from 'react-native-paper'
-import { TouchableOpacity, Text, Image, ScrollView, StyleSheet, View } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import {
+    TouchableOpacity,
+    Text,
+    ScrollView,
+    StyleSheet,
+    View,
+    BackHandler,
+    RefreshControl
+} from 'react-native'
 
 
 
 
 const Feed =(props)=>{
     const { states, setters } = useContext(AuthContext)
+    const [refresh, setRefresh] = useState(false)
     const [restaurants, setRestaurants] = useState([])
     const [searchQuery, setSearchQuery] = useState('')
 
+
+    
+    BackHandler.addEventListener('hardwareBackPress', ()=>{
+        return true
+    })
     
 
     useEffect(()=>{
+        getRestaurants()
+    }, [])
+
+
+    const onRefresh = useCallback(()=>{
+        setRefresh(true)
+        setTimeout(()=>{
+            setRefresh(false)
+        }, 2000)
+
+        getRestaurants()
+    }, [])
+
+
+    const getRestaurants = async()=>{
         const headers = {
             headers: {
-                auth: states.token
+                auth: await AsyncStorage.getItem('token')
             }
         }        
         axios.get(`${url}/restaurants`, headers).then(res=>{
@@ -26,13 +56,13 @@ const Feed =(props)=>{
         }).catch(e=>{
             alert(e.response.data.message)
         })
-    }, [])
+    }
 
 
-    const restaurantDetail = (id)=>{
+    const restaurantDetail = async(id)=>{
         const headers = {
             headers: {
-                auth: states.token
+                auth: await AsyncStorage.getItem('token')
             }
         }
         axios.get(`${url}/restaurants/${id}`, headers).then(res=>{
@@ -57,7 +87,12 @@ const Feed =(props)=>{
 
 
     return(
-        <ScrollView>
+        <ScrollView
+            refreshControl={
+                <RefreshControl
+                    refreshing={refresh}
+                    onRefresh={onRefresh}/>
+                }>
             <View style={styles.logo}>
                 <Searchbar style={{margin:10
                 }}
