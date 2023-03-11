@@ -94,10 +94,7 @@ const Feed =(props)=>{
                     onRefresh={onRefresh}/>
                 }>
             <View style={styles.logo}>
-                <Searchbar style={{margin:10
-                }}
-                    onChangeText={onChangeSearch}
-                    value={searchQuery}/>
+                <Searchbar style={{margin:10}} onChangeText={onChangeSearch} value={searchQuery}/>
                 {found && found.map(rest=>{
                     return(
                         <View key={rest.id}
