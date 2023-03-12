@@ -12,7 +12,8 @@ import Address from './src/pages/address/Address'
 import Cart from './src/pages/cart/Cart'
 import Profile from './src/pages/profile/Profile'
 import UpdateProfile from './src/pages/updateProfile/UpdateProfile'
-import { StatusBar, View, TouchableOpacity } from 'react-native'
+import Splash from './src/pages/Splash/Splash'
+import { StatusBar } from 'react-native'
 
 
 
@@ -70,10 +71,15 @@ export default function App() {
         backgroundColor='red'/>
       <AuthProvider>
         <Stack.Navigator
-          initialRouteName='Login'
+          initialRouteName='Splash'
           screenOptions={{
             headerTitleAlign: 'center'
           }}>
+
+          <Stack.Screen
+            name='Splash'
+            component={Splash}
+            options={{ headerShown: false }}/>
 
           <Stack.Screen 
             name='MyTabs'
@@ -87,17 +93,7 @@ export default function App() {
           <Stack.Screen
             name='Signup'
             component={Signup}/>
-          
-          {/* <Stack.Screen
-            name='Feed'
-            component={Feed}
-            options={{
-              headerLeft: ()=>(
-                <View/>
-              ),
-              title: 'Lista de restaurantes'
-            }}/> */}
-
+            
           <Stack.Screen
             name='Detail'
             component={Detail}
@@ -109,33 +105,12 @@ export default function App() {
             name='Endereço'
             component={Address}/>
 
-           {/* <Stack.Screen
-            name='Carrinho'
-            component={Cart}/> */}
-          
-          {/* <Stack.Screen
-            name='Perfil'
-            component={Profile}
-            options={({navigation})=>({
-              headerLeft: ()=>(
-                <View/>
-              ),
-              headerRight: ()=>(
-                <TouchableOpacity onPress={async()=>{
-                  await AsyncStorage.clear()
-                  navigation.navigate('Login')
-                }}>
-                  <Icon name='logout' size={25}/>
-                </TouchableOpacity>
-              )
-            })}/> */}
-
-            <Stack.Screen
-              name='Atualizar'
-              component={UpdateProfile}
-              options={{
-                title: 'Atualizar perfil'
-              }}/>
+          <Stack.Screen
+            name='Atualizar'
+            component={UpdateProfile}
+            options={{
+              title: 'Atualizar perfil'
+            }}/>
 
         </Stack.Navigator>
       </AuthProvider>
