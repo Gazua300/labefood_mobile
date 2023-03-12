@@ -2,7 +2,6 @@ import { useContext } from "react"
 import { AuthContext } from "../../global/Context"
 import { Avatar } from "react-native-paper"
 import Popup from "../../components/Modal"
-import Footer from "../../components/Footer"
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 
 
@@ -49,8 +48,7 @@ const Detail = ()=>{
                         </TouchableOpacity>
                     </View>
                 )
-            })}  
-            <Footer/>        
+            })}    
         </ScrollView>
     )
 }

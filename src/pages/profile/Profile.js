@@ -1,7 +1,8 @@
 import { useContext, useEffect } from 'react'
 import { AuthContext } from '../../global/Context'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import Icon from "react-native-vector-icons/AntDesign"
 import Edit from 'react-native-vector-icons/Entypo'
-import Footer from '../../components/Footer'
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native"
 
 
@@ -24,6 +25,12 @@ const Profile = (props)=>{
 
     return(
         <ScrollView>
+            <TouchableOpacity style={styles.logoutIcon}
+              onPress={async()=>{
+                await AsyncStorage.clear()
+                props.navigation.navigate('Login')}}>
+              <Icon name='logout' size={25}/>
+            </TouchableOpacity>
             <View style={styles.sectionOne}>
                 <Text style={styles.txtContainer}>
                     {profile.name}{'\n\n'}
@@ -59,16 +66,21 @@ const Profile = (props)=>{
                         </Text>
                     </View>
                 )
-            }) : <Text></Text>}
-            <Footer/>
+            }) : null}
         </ScrollView>
     )
 }
 
 
 const styles = StyleSheet.create({
+    logoutIcon: {
+        margin: 10,
+        position: 'absolute',
+        right: 5
+    },
     sectionOne: {
         margin: 15,
+        marginTop: '20%',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',

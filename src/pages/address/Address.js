@@ -33,7 +33,7 @@ const Address = (props)=>{
         axios.put(`${url}/address`, body, headers).then(res=>{
             console.log(res.data)
             alert('Endereço cadastrado.')
-            props.navigation.navigate('Feed')
+            props.navigation.navigate('MyTabs')
         }).catch(e=>{
             alert(e.response.data)
         })

@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'lightgray',
     },
     pickerContent: {
-        width: 10
+        width: 10,        
     },
     button: {
         margin: 10,

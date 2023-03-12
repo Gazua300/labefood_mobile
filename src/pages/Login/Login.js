@@ -24,7 +24,7 @@ const Login = (props)=>{
             const token = await AsyncStorage.getItem('token')
 
             if(token){
-                props.navigation.navigate('Feed')
+                props.navigation.navigate('MyTabs')
             }
         })()
     }, [])
@@ -38,7 +38,7 @@ const Login = (props)=>{
         axios.post(`${url}/login`, body).then(res=>{
             setters.setToken(res.data.token)
             setters.getToken(res.data.token)
-            props.navigation.navigate('Feed')
+            props.navigation.navigate('MyTabs')
         }).catch(e=>{
             alert(e.response.data.message)
         })

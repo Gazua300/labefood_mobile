@@ -1,8 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import AuthProvider from './src/global/Context'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import Icon from "react-native-vector-icons/AntDesign"
+import Icon from 'react-native-vector-icons/FontAwesome'
+import Person from 'react-native-vector-icons/Ionicons'
 import Login from './src/pages/Login/Login'
 import Signup from './src/pages/Signup/Signup'
 import Feed from './src/pages/feed/Feed'
@@ -15,8 +16,51 @@ import { StatusBar, View, TouchableOpacity } from 'react-native'
 
 
 
-
+const Tab = createBottomTabNavigator()
 const Stack = createNativeStackNavigator()
+
+
+function MyTabs(){
+  return(
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        title: '',
+        headerTitleAlign: 'center'
+      }}>
+
+      <Tab.Screen 
+        name='Feed'
+        component={Feed}
+        options={{
+          tabBarIcon: ()=>(
+            <Icon name='home' size={30}/>
+          )
+        }}/>
+
+      <Tab.Screen 
+        name='Carrinho'
+        component={Cart}
+        options={{
+          tabBarIcon: ()=>(
+            <Icon name='shopping-cart' size={30}/>
+          )
+        }}
+        />
+      
+      <Tab.Screen
+        name='Perfil'
+        component={Profile}
+        options={{
+          tabBarIcon: ()=>(
+            <Person name='person' size={30}/>
+          )
+        }}
+        />
+      
+    </Tab.Navigator>
+  )
+}
 
 
 export default function App() {
@@ -27,7 +71,14 @@ export default function App() {
       <AuthProvider>
         <Stack.Navigator
           initialRouteName='Login'
-          screenOptions={screenOptions}>
+          screenOptions={{
+            headerTitleAlign: 'center'
+          }}>
+
+          <Stack.Screen 
+            name='MyTabs'
+            component={MyTabs}
+            options={{ headerShown: false }}/>
           
           <Stack.Screen
             name='Login'
@@ -37,7 +88,7 @@ export default function App() {
             name='Signup'
             component={Signup}/>
           
-          <Stack.Screen
+          {/* <Stack.Screen
             name='Feed'
             component={Feed}
             options={{
@@ -45,7 +96,7 @@ export default function App() {
                 <View/>
               ),
               title: 'Lista de restaurantes'
-            }}/>
+            }}/> */}
 
           <Stack.Screen
             name='Detail'
@@ -58,11 +109,11 @@ export default function App() {
             name='Endereço'
             component={Address}/>
 
-           <Stack.Screen
+           {/* <Stack.Screen
             name='Carrinho'
-            component={Cart}/>
+            component={Cart}/> */}
           
-          <Stack.Screen
+          {/* <Stack.Screen
             name='Perfil'
             component={Profile}
             options={({navigation})=>({
@@ -77,8 +128,7 @@ export default function App() {
                   <Icon name='logout' size={25}/>
                 </TouchableOpacity>
               )
-            })}
-            />
+            })}/> */}
 
             <Stack.Screen
               name='Atualizar'
@@ -93,10 +143,5 @@ export default function App() {
   ) 
 }
 
-
-const screenOptions = {
-  
-  headerTitleAlign: 'center'
-}
 
 
