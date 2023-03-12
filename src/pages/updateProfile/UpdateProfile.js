@@ -60,13 +60,13 @@ const UpdateProfile = (props)=>{
                     keyboardType='numeric'/>
                 <View style={styles.btnContainer}>
                     <TouchableOpacity style={styles.button}
-                        onPress={upToDate}>
-                        <Text style={{color:'whitesmoke'}}>Salvar</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}
                         onPress={cleanUp}>
                         <Text style={{color:'whitesmoke'}}>Limpar</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                        onPress={upToDate}>
+                        <Text style={{color:'whitesmoke'}}>Salvar</Text>
+                    </TouchableOpacity>                    
                 </View>
             </View>
         </View>

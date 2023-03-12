@@ -87,13 +87,13 @@ const Address = (props)=>{
 
                 <View style={styles.btnContainer}>
                     <TouchableOpacity style={styles.button}
-                        onPress={saveAddress}>
-                        <Text style={{color:'whitesmoke'}}>Salvar</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}
                         onPress={limpar}>
                         <Text style={{color:'whitesmoke'}}>Limpar</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}
+                        onPress={saveAddress}>
+                        <Text style={{color:'whitesmoke'}}>Salvar</Text>
+                    </TouchableOpacity>                    
                 </View>
             </View>
         </View>

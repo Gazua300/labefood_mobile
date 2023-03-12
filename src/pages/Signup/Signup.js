@@ -78,14 +78,14 @@ const Signup = (props)=>{
                     placeholder='Confirme sua senha'/>
 
                 <View style={styles.btnContainer}>
-                        <TouchableOpacity onPress={signup}
-                            style={styles.button}>
-                            <Text style={{color:'whitesmoke'}}>Registrar</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={limpar}
-                            style={styles.button}>
-                            <Text style={{color:'whitesmoke'}}>Limpar</Text>
-                        </TouchableOpacity>
+                    <TouchableOpacity onPress={limpar}
+                        style={styles.button}>
+                        <Text style={{color:'whitesmoke'}}>Limpar</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={signup}
+                        style={styles.button}>
+                        <Text style={{color:'whitesmoke'}}>Registrar</Text>
+                    </TouchableOpacity>                        
                 </View>
             </View>
         </View>
