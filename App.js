@@ -13,7 +13,7 @@ import Cart from './src/pages/cart/Cart'
 import Profile from './src/pages/profile/Profile'
 import UpdateProfile from './src/pages/updateProfile/UpdateProfile'
 import Splash from './src/pages/Splash/Splash'
-import { StatusBar } from 'react-native'
+import { StatusBar, View } from 'react-native'
 
 
 
@@ -80,15 +80,20 @@ export default function App() {
             name='Splash'
             component={Splash}
             options={{ headerShown: false }}/>
+          
+          <Stack.Screen
+            name='Login'
+            component={Login}
+            options={{
+              headerLeft: ()=>(
+                <View/>
+              )
+            }}/>
 
           <Stack.Screen 
             name='MyTabs'
             component={MyTabs}
             options={{ headerShown: false }}/>
-          
-          <Stack.Screen
-            name='Login'
-            component={Login}/>
 
           <Stack.Screen
             name='Signup'

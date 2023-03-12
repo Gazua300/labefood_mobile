@@ -28,7 +28,7 @@ const Signup = (props)=>{
             alert('As senhas não conferem!')
         }else{
             axios.post(`${url}/signup`, body).then(res=>{
-                setters.setToken(res.data.token)
+                setters.getToken(res.data.token)
                 props.navigation.navigate('Endereço')
             }).catch(e=>{
                 alert(e.response.data.message)

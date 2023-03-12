@@ -11,7 +11,6 @@ export const AuthContext = createContext()
 function AuthProvider(props){
     const [restaurant, setRestaurant] = useState([])
     const [restaurantId, setRestaurantId] = useState('')
-    const [token, setToken] = useState('')
     const [product, setProduct] = useState(1)
     const [dish, setDish] = useState({})
     const [dishId, setDishId] = useState('')
@@ -108,9 +107,9 @@ function AuthProvider(props){
 
 
 
-    const states = { token, restaurant, product, visible, dish, bag, dishId, profile,
+    const states = { restaurant, product, visible, dish, bag, dishId, profile,
         restaurantId, demands, request, address }
-    const setters = { getToken, setToken, setRestaurant, setProduct, setVisible, add, addToCart,
+    const setters = { getToken, setRestaurant, setProduct, setVisible, add, addToCart,
         setBag, setRestaurantId }
     const requests = { getProfile, historicRequests, activeRequest, registeredAddress }
 

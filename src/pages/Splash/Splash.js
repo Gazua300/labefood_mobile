@@ -7,7 +7,7 @@ export default function Splash(props) {
 
   useEffect(()=>{
     setTimeout(()=>{
-      props.navigation.navigate('MyTabs')
+      props.navigation.navigate('Login')
     }, 6000)
   }, [])
 

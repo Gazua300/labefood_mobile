@@ -7,6 +7,7 @@ import { Text,
     TextInput,
     View,
     TouchableOpacity,
+    BackHandler
 } from "react-native"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 
@@ -30,13 +31,17 @@ const Login = (props)=>{
     }, [])
 
 
+    BackHandler.addEventListener('hardwareBackPress', ()=>{
+        return true
+    })
+
+
     const login = ()=>{
         const body = {
             email,
             password
         }
-        axios.post(`${url}/login`, body).then(res=>{
-            setters.setToken(res.data.token)
+        axios.post(`${url}/login`, body).then(res=>{            
             setters.getToken(res.data.token)
             props.navigation.navigate('MyTabs')
         }).catch(e=>{
