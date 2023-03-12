@@ -18,7 +18,7 @@ import {
 
 
 const Feed =(props)=>{
-    const { states, setters } = useContext(AuthContext)
+    const { setters } = useContext(AuthContext)
     const [refresh, setRefresh] = useState(false)
     const [restaurants, setRestaurants] = useState([])
     const [searchQuery, setSearchQuery] = useState('')
@@ -87,32 +87,34 @@ const Feed =(props)=>{
 
 
     return(
-        <ScrollView
-            refreshControl={
-                <RefreshControl
-                    refreshing={refresh}
-                    onRefresh={onRefresh}/>
-                }>
-            <View style={styles.logo}>
-                <Searchbar style={{margin:10}} onChangeText={onChangeSearch} value={searchQuery}/>
-                {found && found.map(rest=>{
-                    return(
-                        <View key={rest.id}
-                            style={styles.container}>
-                            <TouchableOpacity onPress={()=> restaurantDetail(rest.id)}>                            
-                                <Avatar.Image size={250} style={styles.avatar}
-                                    source={{uri: rest.logoUrl}}/>
-                            </TouchableOpacity>
-                            <Text style={styles.restName}>{rest.name}</Text>
-                            <Text style={styles.content}>
-                                Entrega em: {rest.deliveryTime}min{'\n'}
-                                Frete: R$ {rest.shipping},00
-                            </Text>
-                        </View>
-                    )
-                })}
-            </View>
-        </ScrollView>
+        <View>
+            <Searchbar style={{margin:10}} onChangeText={onChangeSearch} value={searchQuery}/>
+            <ScrollView
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refresh}
+                        onRefresh={onRefresh}/>
+                    }>
+                <View style={styles.logo}>
+                    {found && found.map(rest=>{
+                        return(
+                            <View key={rest.id}
+                                style={styles.container}>
+                                <TouchableOpacity onPress={()=> restaurantDetail(rest.id)}>                            
+                                    <Avatar.Image size={250} style={styles.avatar}
+                                        source={{uri: rest.logoUrl}}/>
+                                </TouchableOpacity>
+                                <Text style={styles.restName}>{rest.name}</Text>
+                                <Text style={styles.content}>
+                                    Entrega em: {rest.deliveryTime}min{'\n'}
+                                    Frete: R$ {rest.shipping},00
+                                </Text>
+                            </View>
+                        )
+                    })}
+                </View>
+            </ScrollView>
+        </View>
     )
 }
 

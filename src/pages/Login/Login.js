@@ -50,6 +50,12 @@ const Login = (props)=>{
         
     }
 
+
+    const limpar = ()=>{
+        setEmail('')
+        setPassword('')
+    }
+
     return(
         <View style={styles.container}>
             <View style={styles.form}>
@@ -65,6 +71,10 @@ const Login = (props)=>{
                     placeholder="Senha"/>
 
                 <View style={styles.btnContainer}>
+                    <TouchableOpacity onPress={limpar}
+                        style={styles.button}>
+                        <Text style={{color:'whitesmoke'}}>Limpar</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={login}
                         style={styles.button}>
                         <Text style={{color:'whitesmoke'}}>Entrar</Text>
@@ -99,8 +109,10 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10
     },
     btnContainer: {
+        marginTop: 25,
+        flexDirection: 'row',
+        justifyContent: 'space-around', 
         alignItems: 'center',
-        marginTop: 25 
     },
     button: {
         backgroundColor: '#e8222e',
